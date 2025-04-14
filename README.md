@@ -2,7 +2,7 @@
 
 Welcome to my Homelab Kubernetes setup! This repo documents my self-hosted Kubernetes environment, which I've designed for learning, testing, and self-hosting various cloud-native applications. Below is an overview of the hardware, network topology, and software stack that powers the setup.
 
-![Homelab Kubernetes Diagram](image.png)
+![Homelab Kubernetes Diagram](https://github.com/godlyObeng/homelab-k8s/blob/44699777b03984ac8105350e0e89493e24fcbf45/Screenshot%202025-04-14%20at%2018.00.24.png)
 
 ## 🖥️ Hardware Setup
 
@@ -51,9 +51,3 @@ This cluster runs the following services:
 - Cluster bootstrapped with `kubeadm`.
 - Infrastructure automation via Ansible (AWX for orchestration).
 - GitOps style CI/CD and monitoring coming soon.
-
----
-
-## 📸 Diagram
-
-> The above diagram is also available in this repo as `image.png`.
