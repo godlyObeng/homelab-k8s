@@ -1,0 +1,11 @@
+# Example only. Pin the chart version you actually run.
+repositories:
+  - name: cilium
+    url: https://helm.cilium.io/
+releases:
+  - name: cilium
+    chart: cilium/cilium
+    version: 1.19.4
+    namespace: kube-system
+    values:
+      - ./cilium-values.example.yaml

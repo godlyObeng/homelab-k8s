@@ -1,0 +1,39 @@
+# Example only. Replace the cluster name, device name, Kubernetes API
+# address and port for your environment.
+#
+# With ipam.mode: kubernetes, Pod CIDRs come from the Kubernetes cluster
+# configuration (for RKE2, typically cluster-cidr / service-cidr in the
+# RKE2 config). Do not set ipam.operator.clusterPoolIPv4PodCIDRList here;
+# that option belongs to ipam.mode: cluster-pool.
+#
+# routingMode and tunnelProtocol are the Cilium 1.19 chart options for
+# overlay networking. tunnel: vxlan is a legacy chart key and should not
+# be used with this chart version.
+#
+# operator.replicas is set to 1 on purpose. The Cilium 1.19.4 chart default
+# is 2. A second operator replica improves operator availability, but it
+# does not carry the datapath: existing pod networking and LoadBalancer
+# announcements continue while the operator is restarting. On this small
+# lab, one operator replica is the resource trade-off. Raise it to 2 when
+# operator availability during upgrades or node loss matters more than the
+# extra footprint.
+cluster:
+  name: homelab
+devices: eth0
+encryption:
+  enabled: true
+  type: wireguard
+ipam:
+  mode: kubernetes
+k8sServiceHost: 192.168.1.10
+k8sServicePort: 6443
+kubeProxyReplacement: true
+l2announcements:
+  enabled: true
+k8sClientRateLimit:
+  qps: 50
+  burst: 100
+operator:
+  replicas: 1
+routingMode: tunnel
+tunnelProtocol: vxlan

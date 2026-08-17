@@ -1,0 +1,13 @@
+# Example only. Label workers with cluster/role=worker and Services with service/public=true.
+apiVersion: cilium.io/v2alpha1
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: cilium-lb-public-services
+spec:
+  nodeSelector:
+    matchLabels:
+      cluster/role: worker
+  serviceSelector:
+    matchLabels:
+      service/public: "true"
+  loadBalancerIPs: true
